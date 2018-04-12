@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>A Game</title>
+    <script src="javascript.js" charset="utf-8"></script>
+    <style media="screen">
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+
+      tr:nth-child(1) {
+        border-bottom: 1px solid black;
+      }
+
+      tr:nth-child(3) {
+        border-top: 1px solid black;
+      }
+
+      tr td:nth-child(2) {
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+      }
+
+      td {
+        width: 25vw;
+        height: 25vh;
+        text-align: center;
+        font-size: 5em;
+      }
+
+      .player1 {
+        color: red;
+      }
+
+      .player2 {
+        color: blue;
+      }
+
+      .header {
+        text-align: center;
+        font-size: 5em;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      TicTacToe
+    </div>
+    <table>
+      <tr id="row1">
+        <td id="topLeft" onclick="move(this);"></td>
+        <td id="topCenter" onclick="move(this);"></td>
+        <td id="topRight" onclick="move(this);"></td>
+      </tr>
+      <tr id="row2">
+        <td id="midLeft" onclick="move(this);"></td>
+        <td id="midCenter" onclick="move(this);"></td>
+        <td id="midRight" onclick="move(this);"></td>
+      </tr>
+      <tr id="row3">
+        <td id="botLeft" onclick="move(this);"></td>
+        <td id="botCenter" onclick="move(this);"></td>
+        <td id="botRight" onclick="move(this);"></td>
+      </tr>
+    </table>
+
+    <script>
+      var currPlayer = 1;
+      var otherPlayer = 2;
+      var cells = [document.querySelectorAll('#row1 td'), document.querySelectorAll('#row2 td'), document.querySelectorAll('#row3 td')];
+
+      for (let i = 0; i < cells.length; i++) {
+        for (let j = 0; j < cells[i].length; j++) {
+          cells[i][j].classList.add("blank");
+        }
+      }
+
+      function move(cell) {
+        addValue(cell);
+        checkVictory(cell);
+        // console.log(cell);
+        togglePlayer();
+      }
+    </script>
+  </body>
+</html>
